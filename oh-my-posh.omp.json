@@ -1,0 +1,270 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "palette": {
+    "background": "#062050",
+    "root": "#ffc401",
+    "shell": "#307ae7",
+    "user": "#73ecfc",
+    "path": "#3EC669",
+    "git-foreground": "#41dbfd",
+    "git-modified": "#FF9248",
+    "git-diverged": "#f55216",
+    "git-ahead": "#b388ff",
+    "git-behind": "#81a9ff",
+    "git-changed": "#ff312e",
+    "git-staging": "#24af24",
+    "git-stash": "#7bf8e3",
+    "node": "#43b838",
+    "npm": "#fa4444",
+    "yarn": "#02a0f7",
+    "typescript": "#3C82F6",
+    "deno": "#f2f2f2",
+    "dotnet": "#5f0fd8",
+    "go": "#66d0dd",
+    "error": "#ec5020",
+    "arrow": "#5dfa8a",
+    "execut": "#f7e29c"
+  },
+  "blocks": [
+    {
+      "alignment": "left",
+      "segments": [
+        {
+          "background": "p:background",
+          "foreground": "p:shell",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "template": "{{ if .Root }}<p:root>\uf982\u200d</>{{ end }}\uf489 {{ .Name }}",
+          "style": "diamond",
+          "type": "shell"
+        },
+        {
+          "background": "p:background",
+          "foreground": "p:user",
+          "leading_diamond": " \ue0b6",
+          "template": "{{ if .SSHSession }}\uF817 {{ end }}\uf508 {{ .UserName }} ",
+          "style": "diamond",
+          "type": "session"
+        },
+        {
+          "background": "p:background",
+          "foreground": "p:path",
+          "properties": {
+            "style": "agnoster",
+            "folder_separator_icon": "/"
+          },
+          "style": "diamond",
+          "template": "\ue5ff {{ .Path }}",
+          "trailing_diamond": "\ue0b4",
+          "type": "path"
+        },
+        {
+          "background": "p:background",
+          "foreground": "p:git-foreground",
+          "leading_diamond": " \ue0b6",
+          "foreground_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}p:git-modified{{ end }}",
+            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}p:git-diverged{{ end }}",
+            "{{ if gt .Ahead 0 }}p:git-ahead{{ end }}",
+            "{{ if gt .Behind 0 }}p:git-behind{{ end }}"
+          ],
+          "properties": {
+            "branch_max_length": 25,
+            "fetch_stash_count": true,
+            "fetch_status": true,
+            "fetch_upstream_icon": true,
+            "commit_icon": " ",
+            "github_icon": " "
+          },
+          "style": "diamond",
+          "templates": [
+            "{{ if .Upstream }}{{ url .UpstreamIcon .UpstreamURL }}{{ else }}\uF7A1 {{ end }}{{ .HEAD }}",
+            "{{ if and .Upstream .BranchStatus }} {{ .BranchStatus }}{{ end }}",
+            "{{ if .Working.Changed }}<p:git-changed> \uf044 {{ .Working.String }}</>{{ end }}",
+            "{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}",
+            "{{ if .Staging.Changed }}<p:git-staging> \uf046 {{ .Staging.String }}</>{{ end }}",
+            "{{ if gt .StashCount 0 }}<p:git-stash> \uf692 {{ .StashCount }}</>{{ end }}"
+          ],
+          "trailing_diamond": "\ue0b4",
+          "type": "git"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "right",
+      "segments": [
+        {
+          "background": "p:background",
+          "foreground": "green",
+          "leading_diamond": " \ue0b6",
+          "foreground_templates": [
+            "{{ if gt .Code 0 }}p:error{{ end }}"
+          ],
+          "properties": {
+            "always_enabled": true
+          },
+          "style": "diamond",
+          "template": "{{ if gt .Code 0 }}\uf655{{else}}\uf42e{{ end }} ",
+          "type": "exit"
+        },
+        {
+          "background": "p:background",
+          "foreground": "p:execut",
+          "trailing_diamond": "\ue0b4",
+          "properties": {
+            "always_enabled": true
+          },
+          "style": "diamond",
+          "template": "\uf469 {{ .FormattedMs }}",
+          "type": "executiontime"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "foreground": "p:arrow",
+          "style": "plain",
+          "template": "\uf7c6 ",
+          "type": "text"
+        }
+      ],
+      "type": "prompt"
+    }
+  ],
+  "tooltips": [
+    {
+      "type": "command",
+      "style": "plain",
+      "tips": [
+        "node"
+      ],
+      "foreground": "p:node",
+      "properties": {
+        "command": "echo $(node -v) | sed 's/v//g'"
+      },
+      "template": "\uf7d7 {{ .Output }}"
+    },
+    {
+      "type": "command",
+      "style": "plain",
+      "tips": [
+        "npm",
+        "npx"
+      ],
+      "foreground": "p:npm",
+      "properties": {
+        "command": "node -p \"require('C:/Program Files/nodejs/node_modules/npm/package.json').version\""
+      },
+      "template": "\ue71e {{ .Output }}"
+    },
+    {
+      "type": "command",
+      "style": "plain",
+      "tips": [
+        "yarn"
+      ],
+      "foreground": "p:yarn",
+      "properties": {
+        "command": "yarn -v"
+      },
+      "template": "\uf483 {{ .Output }}"
+    },
+    {
+      "type": "command",
+      "style": "plain",
+      "tips": [
+        "tsc"
+      ],
+      "foreground": "p:typescript",
+      "properties": {
+        "command": "echo $(tsc -v) | sed 's/Version //g'"
+      },
+      "template": "\ue628 {{ .Output }}"
+    },
+    {
+      "type": "command",
+      "style": "plain",
+      "tips": [
+        "deno"
+      ],
+      "foreground": "p:deno",
+      "properties": {
+        "command": "echo $(deno -V) | sed 's/deno//g'"
+      },
+      "template": "\ufbe4\u200e{{ .Output }} "
+    },
+    {
+      "type": "command",
+      "style": "plain",
+      "tips": [
+        "pwsh"
+      ],
+      "foreground": "p:shell",
+      "properties": {
+        "command": "echo $(pwsh -v) | sed 's/PowerShell //g'"
+      },
+      "template": "\uf489 {{ .Output }}"
+    },
+    {
+      "type": "command",
+      "style": "plain",
+      "tips": [
+        "git"
+      ],
+      "foreground": "p:git-modified",
+      "properties": {
+        "command": "echo $(git -v) | sed 's/git version //g' | sed 's/.windows.2//g'"
+      },
+      "template": "\uF7A1 {{ .Output }}"
+    },
+    {
+      "type": "command",
+      "style": "plain",
+      "tips": [
+        "dotnet"
+      ],
+      "foreground": "p:dotnet",
+      "properties": {
+        "command": "dotnet --version"
+      },
+      "template": ".NET {{ .Output }}"
+    },
+    {
+      "type": "command",
+      "style": "plain",
+      "tips": [
+        "go"
+      ],
+      "foreground": "p:go",
+      "properties": {
+        "command": "echo $(go version) | sed 's/go version go//g' | sed 's/windows\\/amd64//g'"
+      },
+      "template": "\ue627 {{ .Output }}"
+    },
+    {
+      "type": "command",
+      "style": "plain",
+      "tips": [
+        "python",
+        "pip"
+      ],
+      "foreground": "#407ed0",
+      "properties": {
+        "command": "echo $(python --version) | sed 's/Python //g'"
+      },
+      "template": "<#ffdc53>\ue606</> {{ .Output }}"
+    }
+  ],
+  "transient_prompt": {
+    "background": "transparent",
+    "foreground": "p:path",
+    "template": "<p:arrow>\u279c</> {{ .Folder }} "
+  },
+  "final_space": false,
+  "version": 2
+}
