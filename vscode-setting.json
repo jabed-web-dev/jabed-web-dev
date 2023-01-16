@@ -1,0 +1,102 @@
+{
+    "window.title": "${dirty}${activeEditorShort}${separator}${rootName}",
+    "window.titleBarStyle": "custom",
+    "window.menuBarVisibility": "compact",
+    "window.commandCenter": false,
+    "workbench.layoutControl.enabled": false,
+    "security.workspace.trust.enabled": false,
+    "extensions.autoCheckUpdates": false,
+    "extensions.autoUpdate": false,
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorTheme": "GitHub Dark Default",
+    "workbench.startupEditor": "none",
+    "breadcrumbs.enabled": false,
+    "editor.accessibilitySupport": "off",
+    "editor.fontFamily": "FiraCode Nerd Font",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 17,
+    "editor.lineHeight": 32,
+    "editor.letterSpacing": 0.2,
+    "editor.minimap.enabled": false,
+    "editor.minimap.maxColumn": 80,
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": true,
+    "editor.formatOnSave": true,
+    "editor.linkedEditing": true,
+    "editor.links": true,
+    "editor.lineNumbers": "on",
+    "editor.tabSize": 2,
+    "editor.renderWhitespace": "selection",
+    "editor.suggest.insertMode": "replace",
+    "files.autoSave": "onFocusChange",
+    "markdown.preview.fontFamily": "FiraCode Nerd Font",
+    "markdown.preview.fontSize": 14,
+    "terminal.integrated.fontFamily": "Hack Nerd Font",
+    "terminal.integrated.cursorStyle": "line",
+    "terminal.integrated.cursorWidth": 2,
+    "terminal.integrated.fontSize": 16,
+    "terminal.integrated.lineHeight": 1.1,
+    "terminal.integrated.sendKeybindingsToShell": true,
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    "terminal.integrated.profiles.windows": {
+        "PowerShell": {
+            "source": "PowerShell",
+            "icon": "terminal-powershell",
+            "args": [
+                "-NoLogo"
+            ]
+        }
+    },
+    "material-icon-theme.folders.color": "#70d0fa",
+    "workbench.colorCustomizations": {
+        "editorWhitespace.foreground": "#5f6fa0",
+        "editor.selectionBackground": "#1e465e",
+        "terminal.ansiBlue": "#0f2fff",
+        "terminal.ansiBrightBlue": "#538fff",
+        "terminal.ansiMagenta": "#ed32f0",
+        "terminal.ansiBrightMagenta": "#b666f0",
+        "[Night Owl]": {
+            "sideBar.background": "#011424"
+        }
+    },
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features",
+    },
+    "[css]": {
+        "editor.defaultFormatter": "vscode.css-language-features",
+    },
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "[javascriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "javascript.preferences.quoteStyle": "double",
+    },
+    "cSpell.userWords": [
+        "Hossain",
+        "Jabed",
+        "tailwindcss"
+    ],
+    "tailwindCSS.includeLanguages": {
+        "svg": "html"
+    },
+    "tailwindCSS.experimental.classRegex": [
+        "\"([^]*?)\"",
+        "'@apply\\s([^]*?)'",
+        "'class',\\s'([^]*?)'"
+    ],
+    "html.format.extraLiners": "",
+    "css.validate": true,
+    "javascript.format.semicolons": "remove",
+    "javascript.preferences.quoteStyle": "single",
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "javascript.suggest.autoImports": false,
+    "prettier.singleQuote": true,
+    "prettier.semi": false,
+}
