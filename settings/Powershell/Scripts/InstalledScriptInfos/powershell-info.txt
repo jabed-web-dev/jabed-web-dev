@@ -1,0 +1,42 @@
+Start-Process wt.exe -ArgumentList '-p "PowerShell"', "pwsh.exe", "-NoExit", "-Command", "& {`$Host.UI.RawUI.WindowTitle='list files and goto SO'\;cd Desktop/Git}"
+# (Get-Command node.exe).Source
+# [guid]::NewGuid()
+# # Requires -RunAsAdministrator
+# (Get-Process -Name msedge).*
+# Convert Path
+	# $path = "./newdir/newfile.txt"
+	# $newPath = $path -replace '^\.', ''
+	# 1 Join-Path (Resolve-Path .) $newPath
+	# 2 [IO.Path]::Combine($pwd, $newPath)
+
+	# 3 [Environment]::CurrentDirectory = $pwd
+	# 3 [IO.Path]::GetFullPath("non\existing\path")
+	# 4 $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath(".\nonexist\foo.txt")
+
+# PWSL Environment Variable
+# $env:PATH += ";C:\Users\Jabed" (set Path)
+# $env:PATH (get Path)
+# $env:PORT=8080 (set variable, string with "")
+# $env:PORT (get variable)
+# gci env:
+
+# CMD Environment Variable
+# set PATH=%PATH%;C:\User\Jabed (set Path)
+# echo %PATH% (get Path)
+# set PORT=8080 (set variable)
+# echo %PORT% (get variable)
+# echo $Env:%PATH%
+
+# Bash Set Environment Variable
+# export PATH=$PATH:/c/Users/Jabed (set Path)
+# echo $PATH (get Path)
+# export PORT=8080 (set variable, space with "")
+# echo $PORT (get variable)
+# printenv
+
+# Write-Host "start the line before loop"
+# for ($a=0; $a -le 100; $a++) {
+#     Write-Host -NoNewLine "`r$a% complete"
+#     Start-Sleep -Milliseconds 10
+# }
+# Write-Host "`nends the line after loop"
